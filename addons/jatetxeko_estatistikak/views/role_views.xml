@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_rola_tree" model="ir.ui.view">
+            <field name="name">jatetxeko.rola.tree</field>
+            <field name="model">jatetxeko.rola</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="external_id"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_rola_form" model="ir.ui.view">
+            <field name="name">jatetxeko.rola.form</field>
+            <field name="model">jatetxeko.rola</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="external_id"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_rola_search" model="ir.ui.view">
+            <field name="name">jatetxeko.rola.search</field>
+            <field name="model">jatetxeko.rola</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_rola" model="ir.actions.act_window">
+            <field name="name">Rolak</field>
+            <field name="res_model">jatetxeko.rola</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_rola_search"/>
+        </record>
+    </data>
+</odoo>

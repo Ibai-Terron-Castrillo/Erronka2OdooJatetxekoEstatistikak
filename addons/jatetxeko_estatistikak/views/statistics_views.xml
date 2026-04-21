@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Orders per Server Graph View -->
+        <record id="view_orders_per_server_graph" model="ir.ui.view">
+            <field name="name">Eskaerak zerbitzari bakoitzeko</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="zerbitzaria_id"/>
+                    <field name="total_amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Orders per Server Graph (Count) -->
+        <record id="view_orders_count_per_server_graph" model="ir.ui.view">
+            <field name="name">Eskaera kopurua zerbitzari bakoitzeko</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="zerbitzaria_id"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Orders per Dish Graph View -->
+        <record id="view_orders_per_dish_graph" model="ir.ui.view">
+            <field name="name">Eskaerak plater bakoitzeko</field>
+            <field name="model">jatetxeko.eskaera.line</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="platera_id"/>
+                    <field name="quantity" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Busiest Days of Week Pivot View -->
+        <record id="view_busiest_days_week_pivot" model="ir.ui.view">
+            <field name="name">Aste gogorrenak</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="date" interval="day" type="row"/>
+                    <field name="date" interval="week" type="col"/>
+                    <field name="total_amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Day of Week Analysis -->
+        <record id="view_day_of_week_graph" model="ir.ui.view">
+            <field name="name">Asteko egunak</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="date" interval="day"/>
+                    <field name="total_amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Monthly Statistics Graph -->
+        <record id="view_monthly_stats_graph" model="ir.ui.view">
+            <field name="name">Hileko estatistikak</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <graph type="line">
+                    <field name="date" interval="month"/>
+                    <field name="total_amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Monthly Pivot -->
+        <record id="view_monthly_stats_pivot" model="ir.ui.view">
+            <field name="name">Hileko estatistikak pivot</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="date" interval="month" type="row"/>
+                    <field name="total_amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Actions for Statistics -->
+        <record id="action_orders_per_server" model="ir.actions.act_window">
+            <field name="name">Zerbitzari bakoitzeko eskaerak</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_orders_per_server_graph"/>
+        </record>
+
+        <record id="action_orders_count_per_server" model="ir.actions.act_window">
+            <field name="name">Zerbitzarien eskaera kopurua</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_orders_count_per_server_graph"/>
+        </record>
+
+        <record id="action_orders_per_dish" model="ir.actions.act_window">
+            <field name="name">Plater bakoitzeko eskaerak</field>
+            <field name="res_model">jatetxeko.eskaera.line</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_orders_per_dish_graph"/>
+        </record>
+
+        <record id="action_busiest_days_week" model="ir.actions.act_window">
+            <field name="name">Aste gogorrenak</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="view_id" ref="view_busiest_days_week_pivot"/>
+        </record>
+
+        <record id="action_day_of_week" model="ir.actions.act_window">
+            <field name="name">Asteko egunak</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_day_of_week_graph"/>
+        </record>
+
+        <record id="action_monthly_stats" model="ir.actions.act_window">
+            <field name="name">Hileko estatistikak</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_monthly_stats_graph"/>
+        </record>
+
+        <!-- Dashboard Action (Combined View) -->
+        <record id="action_jatetxeko_dashboard" model="ir.actions.act_window">
+            <field name="name">Dashboard Orokorra</field>
+            <field name="res_model">jatetxeko.eskaera</field>
+            <field name="view_mode">graph,pivot</field>
+            <field name="view_id" ref="view_day_of_week_graph"/>
+            <field name="context">{'search_default_group_by_date': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Ez dago daturik dashboard-a erakusteko.
+                </p>
+            </field>
+        </record>
+
+        <!-- PDF Report Action -->
+        <record id="action_report_statistics_pdf" model="ir.actions.report">
+            <field name="name">Estatistika Txostena (PDF)</field>
+            <field name="model">jatetxeko.eskaera</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">jatetxeko_estatistikak.statistics_report</field>
+            <field name="report_file">jatetxeko_estatistikak.statistics_report</field>
+            <field name="binding_model_id" ref="model_jatetxeko_eskaera"/>
+            <field name="binding_type">action</field>
+        </record>
+    </data>
+</odoo>

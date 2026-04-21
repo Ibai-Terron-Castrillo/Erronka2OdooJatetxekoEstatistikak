@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="statistics_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>Jatetxeko Estatistika Txostena</h1>
+                        <p class="text-muted">
+                            Data: <span t-esc="date_from" t-options='{"widget": "date"}'/> - <span t-esc="date_to" t-options='{"widget": "date"}'/>
+                        </p>
+
+                        <!-- Summary Section -->
+                        <div class="row mt32 mb32">
+                            <div class="col-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h3 t-esc="total_revenue" t-options='{"widget": "float", "precision": 2}'/>
+                                        <small class="text-muted">Guztizkoa (€)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h3 t-esc="total_orders"/>
+                                        <small class="text-muted">Eskaerak</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="card bg-light">
+                                    <div class="card-body text-center">
+                                        <h3 t-esc="avg_order_value" t-options='{"widget": "float", "precision": 2}'/>
+                                        <small class="text-muted">Batazbesteko Eskaera (€)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts Section -->
+                        <t t-if="has_matplotlib">
+                            <div style="page-break-before: always;">&#160;</div>
+
+                            <h2>Grafikoak</h2>
+
+                            <!-- Server Revenue Chart -->
+                            <div class="mt16 mb32" t-if="charts.get('server_revenue')">
+                                <h3>Zerbitzarien Diru-sarrera</h3>
+                                <img t-att-src="'data:image/png;base64,%s' % charts['server_revenue']" style="max-width: 100%; height: auto;"/>
+                            </div>
+
+                            <!-- Day of Week Chart -->
+                            <div class="mt16 mb32" t-if="charts.get('day_of_week')">
+                                <h3>Asteko Egunen Araberako Salmentak</h3>
+                                <img t-att-src="'data:image/png;base64,%s' % charts['day_of_week']" style="max-width: 100%; height: auto;"/>
+                            </div>
+
+                            <!-- Dish Quantity Chart -->
+                            <div class="mt16 mb32" t-if="charts.get('dish_quantity')">
+                                <h3>Plater Popularrak</h3>
+                                <img t-att-src="'data:image/png;base64,%s' % charts['dish_quantity']" style="max-width: 100%; height: auto;"/>
+                            </div>
+
+                            <!-- Monthly Chart -->
+                            <div class="mt16 mb32" t-if="charts.get('monthly')">
+                                <h3>Hileko Salmentak</h3>
+                                <img t-att-src="'data:image/png;base64,%s' % charts['monthly']" style="max-width: 100%; height: auto;"/>
+                            </div>
+
+                            <!-- Server Pie Chart -->
+                            <div class="mt16 mb32" t-if="charts.get('server_pie')">
+                                <h3>Zerbitzarien Banaketa</h3>
+                                <img t-att-src="'data:image/png;base64,%s' % charts['server_pie']" style="max-width: 100%; height: auto;"/>
+                            </div>
+                        </t>
+
+                        <!-- Tables Section -->
+                        <div style="page-break-before: always;">&#160;</div>
+
+                        <h2>Zerbitzari bakoitzeko estatistikak</h2>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Zerbitzaria</th>
+                                    <th class="text-right">Eskaerak</th>
+                                    <th class="text-right">Guztizkoa (€)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="server_stats.values()" t-as="stat">
+                                    <tr>
+                                        <td t-esc="stat['name']"/>
+                                        <td class="text-right" t-esc="stat['count']"/>
+                                        <td class="text-right" t-esc="round(stat['total'], 2)"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <h2>Plater bakoitzeko estatistikak</h2>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Platera</th>
+                                    <th class="text-right">Kopurua</th>
+                                    <th class="text-right">Guztizkoa (€)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="dish_stats.values()" t-as="stat">
+                                    <tr>
+                                        <td t-esc="stat['name']"/>
+                                        <td class="text-right" t-esc="stat['quantity']"/>
+                                        <td class="text-right" t-esc="round(stat['total'], 2)"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <h2>Asteko egunen araberako estatistikak</h2>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Eguna</th>
+                                    <th class="text-right">Eskaerak</th>
+                                    <th class="text-right">Guztizkoa (€)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="range(7)" t-as="day_idx">
+                                    <tr>
+                                        <td t-esc="day_names[day_idx]"/>
+                                        <td class="text-right" t-esc="day_stats.get(day_idx, {}).get('count', 0)"/>
+                                        <td class="text-right" t-esc="round(day_stats.get(day_idx, {}).get('total', 0), 2)"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <h2>Hileko estatistikak</h2>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Hilabetea</th>
+                                    <th class="text-right">Eskaerak</th>
+                                    <th class="text-right">Guztizkoa (€)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="sorted(month_stats.keys())" t-as="month">
+                                    <tr>
+                                        <td t-esc="month"/>
+                                        <td class="text-right" t-esc="month_stats[month]['count']"/>
+                                        <td class="text-right" t-esc="round(month_stats[month]['total'], 2)"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <p class="text-muted text-center mt32">
+                            Txostena automatikoki sortua: <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M')"/>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

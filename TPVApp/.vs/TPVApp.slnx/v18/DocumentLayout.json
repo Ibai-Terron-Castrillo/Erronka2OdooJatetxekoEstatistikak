@@ -1,0 +1,295 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\MODELOAK\\ZerbitzuXehetasunak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\MODELOAK\\ZerbitzuXehetasunak.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEskariaDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\DTOak\\ZerbitzuaEskariaDto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\AurrekoPlatera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\DTOak\\AurrekoPlatera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Fakturak\\FakturaSortu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Zerbitzuak\\OdooZerbitzua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\Zerbitzuak\\OdooZerbitzua.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InbentarioaKudeatu.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs",
+              "RelativeToolTip": "TPV\\UI\\Inbentarioa\\InbentarioaKudeatu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:27:34.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ZerbitzuXehetasunak.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\MODELOAK\\ZerbitzuXehetasunak.cs",
+              "RelativeDocumentMoniker": "TPV\\MODELOAK\\ZerbitzuXehetasunak.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\MODELOAK\\ZerbitzuXehetasunak.cs",
+              "RelativeToolTip": "TPV\\MODELOAK\\ZerbitzuXehetasunak.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:27:08.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ZerbitzuaEskariaDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEskariaDto.cs",
+              "RelativeDocumentMoniker": "TPV\\DTOak\\ZerbitzuaEskariaDto.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEskariaDto.cs",
+              "RelativeToolTip": "TPV\\DTOak\\ZerbitzuaEskariaDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:27:06.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ZerbitzuaEmaitzaDto.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs",
+              "RelativeDocumentMoniker": "TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs",
+              "RelativeToolTip": "TPV\\DTOak\\ZerbitzuaEmaitzaDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:27:03.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlaterenOsagaiakIkusi.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs",
+              "RelativeToolTip": "TPV\\UI\\PlaterenOsagaiak\\PlaterenOsagaiakIkusi.cs",
+              "ViewState": "AgIAANEAAAAAAAAAAIAwwN4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:26:52.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Program.cs",
+              "RelativeDocumentMoniker": "TPV\\Program.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Program.cs",
+              "RelativeToolTip": "TPV\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T09:07:18.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AurrekoPlatera.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\AurrekoPlatera.cs",
+              "RelativeDocumentMoniker": "TPV\\DTOak\\AurrekoPlatera.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\DTOak\\AurrekoPlatera.cs",
+              "RelativeToolTip": "TPV\\DTOak\\AurrekoPlatera.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:26:50.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ZerbitzuaHasi.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs",
+              "RelativeToolTip": "TPV\\UI\\Zerbitzuak\\ZerbitzuaHasi.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:24:24.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ZerbitzuaKudeatu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs",
+              "RelativeToolTip": "TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:24:21.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ZerbitzuenEgoera.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs",
+              "RelativeToolTip": "TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:24:11.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ZerbitzuaKudeatu.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs",
+              "RelativeToolTip": "TPV\\UI\\Zerbitzuak\\ZerbitzuaKudeatu.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAIAwwD0AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T12:23:46.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ZerbitzuenEgoera.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs",
+              "RelativeToolTip": "TPV\\UI\\Zerbitzuak\\ZerbitzuenEgoera.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAIAwwPwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:48:20.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FakturaSortu.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs",
+              "RelativeToolTip": "TPV\\UI\\Fakturak\\FakturaSortu.Designer.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAwwJwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:48:54.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "FakturaSortu.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Fakturak\\FakturaSortu.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Fakturak\\FakturaSortu.cs",
+              "RelativeToolTip": "TPV\\UI\\Fakturak\\FakturaSortu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:48:36.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OdooZerbitzua.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Zerbitzuak\\OdooZerbitzua.cs",
+              "RelativeDocumentMoniker": "TPV\\Zerbitzuak\\OdooZerbitzua.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\Zerbitzuak\\OdooZerbitzua.cs",
+              "RelativeToolTip": "TPV\\Zerbitzuak\\OdooZerbitzua.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAwwKMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-13T12:47:56.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ErreserbaEditatu.cs",
+              "DocumentMoniker": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "RelativeDocumentMoniker": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "ToolTip": "C:\\Users\\Ibai\\Downloads\\odoo_16_bluehat\\odoo_16_bluehat\\TPVApp\\TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "RelativeToolTip": "TPV\\UI\\Erreserbak\\ErreserbaEditatu.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAAB8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T09:08:17.537Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

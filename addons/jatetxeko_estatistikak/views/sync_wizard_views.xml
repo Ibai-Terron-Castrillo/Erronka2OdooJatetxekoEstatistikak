@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Sync Wizard Form -->
+        <record id="view_sync_wizard_form" model="ir.ui.view">
+            <field name="name">jatetxeko.sync.wizard.form</field>
+            <field name="model">jatetxeko.sync.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_sync" string="Sinkronizatu" type="object" class="btn-primary"/>
+                        <button string="Utzi" special="cancel" class="btn-secondary"/>
+                    </header>
+                    <sheet>
+                        <group string="Sinkronizazio Aukerak">
+                            <field name="sync_type" widget="radio"/>
+                            <field name="date_from" attrs="{'invisible': [('sync_type', '!=', 'orders')]}"/>
+                        </group>
+                        <group string="Argibideak">
+                            <p>
+                                <strong>Sinkronizazio osoa:</strong> Zerbitzariak, platerak, mahiak eta eskaerak C# API-tik deskargatzen ditu.
+                            </p>
+                            <p>
+                                <strong>Datu maisuak:</strong> Zerbitzariak, platerak eta mahiak soilik sinkronizatzen ditu.
+                            </p>
+                            <p>
+                                <strong>Eskaerak soilik:</strong> Eskaerak soilik sinkronizatzen ditu, aukerako data batetik aurrera.
+                            </p>
+                            <p>
+                                <strong>Langileak APIra bidali:</strong> Odoon sortutako langileak (erabiltzailea eta pasahitza dutenak) C# APIra bidaltzen ditu TPV aplikazioan erabili ahal izateko.
+                            </p>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Sync Wizard Action -->
+        <record id="action_sync_wizard" model="ir.actions.act_window">
+            <field name="name">API Sinkronizazioa</field>
+            <field name="res_model">jatetxeko.sync.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Sync Log Tree View -->
+        <record id="view_sync_log_tree" model="ir.ui.view">
+            <field name="name">jatetxeko.sync.log.tree</field>
+            <field name="model">jatetxeko.sync.log</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="create_date"/>
+                    <field name="sync_type"/>
+                    <field name="status"/>
+                    <field name="records_synced"/>
+                    <field name="error_message"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Sync Log Form View -->
+        <record id="view_sync_log_form" model="ir.ui.view">
+            <field name="name">jatetxeko.sync.log.form</field>
+            <field name="model">jatetxeko.sync.log</field>
+            <field name="arch" type="xml">
+                <form readonly="1">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="sync_type"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="records_synced"/>
+                            </group>
+                        </group>
+                        <group string="Errore Mezua" attrs="{'invisible': [('error_message', '=', False)]}">
+                            <field name="error_message"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Sync Log Action -->
+        <record id="action_sync_log" model="ir.actions.act_window">
+            <field name="name">Sinkronizazio Log</field>
+            <field name="res_model">jatetxeko.sync.log</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

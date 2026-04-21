@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_mahia_tree" model="ir.ui.view">
+            <field name="name">jatetxeko.mahia.tree</field>
+            <field name="model">jatetxeko.mahia</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="capacity"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_mahia_form" model="ir.ui.view">
+            <field name="name">jatetxeko.mahia.form</field>
+            <field name="model">jatetxeko.mahia</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="active" widget="boolean_toggle"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="external_id"/>
+                            </group>
+                            <group>
+                                <field name="capacity"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_mahia" model="ir.actions.act_window">
+            <field name="name">Mahiak</field>
+            <field name="res_model">jatetxeko.mahia</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
