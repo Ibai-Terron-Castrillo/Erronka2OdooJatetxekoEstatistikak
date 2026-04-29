@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Wizard Form View -->
+        <!-- Morroiaren formulario-ikuspegia -->
         <record id="view_report_wizard_form" model="ir.ui.view">
             <field name="name">Estatistika Txostena - Data Aukeraketa</field>
             <field name="model">jatetxeko.report.wizard</field>
@@ -21,7 +21,7 @@
             </field>
         </record>
 
-        <!-- Wizard Action -->
+        <!-- Morroiaren ekintza -->
         <record id="action_report_wizard" model="ir.actions.act_window">
             <field name="name">Inprimatu Estatistika Txostena</field>
             <field name="res_model">jatetxeko.report.wizard</field>

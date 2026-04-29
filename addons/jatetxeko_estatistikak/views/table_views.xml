@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Tree View -->
+        <!-- Zerrenda-ikuspegia -->
         <record id="view_mahia_tree" model="ir.ui.view">
-            <field name="name">jatetxeko.mahia.tree</field>
+            <field name="name">jatetxeko.mahia.zerrenda</field>
             <field name="model">jatetxeko.mahia</field>
             <field name="arch" type="xml">
                 <tree>
@@ -14,7 +14,7 @@
             </field>
         </record>
 
-        <!-- Form View -->
+        <!-- Formulario-ikuspegia -->
         <record id="view_mahia_form" model="ir.ui.view">
             <field name="name">jatetxeko.mahia.form</field>
             <field name="model">jatetxeko.mahia</field>
@@ -38,7 +38,7 @@
             </field>
         </record>
 
-        <!-- Action -->
+        <!-- Ekintza -->
         <record id="action_mahia" model="ir.actions.act_window">
             <field name="name">Mahiak</field>
             <field name="res_model">jatetxeko.mahia</field>

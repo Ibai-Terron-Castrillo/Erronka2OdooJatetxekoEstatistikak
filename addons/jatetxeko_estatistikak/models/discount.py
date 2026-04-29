@@ -5,7 +5,7 @@ import string
 
 class Deskontuak(models.Model):
     _name = "jatetxeko.deskontuak"
-    _description = "Deskontuak (Discount Codes)"
+    _description = "Deskontuak"
 
     name = fields.Char(string="Kodea", required=True, copy=False,
                        default=lambda self: self._generate_code())
@@ -20,25 +20,25 @@ class Deskontuak(models.Model):
 
     def unlink(self):
         """
-        Manually clear references in Eskaera before deleting the Discount
-        to bypass database constraint if module is not fully updated.
+        Deskuntua ezabatu aurretik, Eskaeretan (jatetxeko.eskaera) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
         """
         for record in self:
-            # Find orders using this discount
+            # Deskuntu hau erabiltzen duten eskaerak bilatu
             orders = self.env['jatetxeko.eskaera'].search([('discount_id', '=', record.id)])
             if orders:
-                # Clear the discount_id
+                # discount_id eremua garbitu
                 orders.write({'discount_id': False})
         return super(Deskontuak, self).unlink()
 
     @api.model
     def _generate_code(self):
-        """Generate random 8-character discount code"""
+        """Ausazko 8 karaktereko deskontu-kodea sortu"""
         return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
     @api.model
     def validate_code(self, code):
-        """Validate a discount code and return percentage if valid"""
+        """Deskontu-kodea balioztatu eta, baliozkoa bada, ehunekoa itzuli"""
         discount = self.search([('name', '=', code), ('active', '=', True)], limit=1)
         if not discount:
             return {'valid': False, 'message': 'Kodea ez da aurkitu'}
@@ -57,6 +57,6 @@ class Deskontuak(models.Model):
         return {'valid': True, 'percentage': discount.percentage, 'code_id': discount.id}
 
     def use_code(self):
-        """Increment usage count"""
+        """Erabilera-kopurua handitu"""
         self.ensure_one()
         self.usage_count += 1

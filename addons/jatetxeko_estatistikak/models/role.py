@@ -4,7 +4,7 @@ from odoo import models, fields
 
 class Rola(models.Model):
     _name = "jatetxeko.rola"
-    _description = "Rola (Role)"
+    _description = "Rola"
 
     name = fields.Char(string="Izena", required=True)
     external_id = fields.Integer(string="Kanpo ID", help="C# API-ko ID")
@@ -12,14 +12,14 @@ class Rola(models.Model):
 
     def unlink(self):
         """
-        Manually clear references in Zerbitzaria (Server) before deleting the Role
-        to bypass database constraint if module is not fully updated.
-        Using sudo() to ensure we have permission to clear the field.
+        Rola ezabatu aurretik, Zerbitzarietan (jatetxeko.zerbitzaria) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
+        sudo() erabiltzen da eremua garbitzeko baimenak ziurtatzeko.
         """
         for record in self:
-            # Find servers using this role
+            # Rola hau erabiltzen duten zerbitzariak bilatu
             servers = self.env['jatetxeko.zerbitzaria'].sudo().search([('role_id', '=', record.id)])
             if servers:
-                # Clear the role_id
+                # role_id eremua garbitu
                 servers.write({'role_id': False})
         return super(Rola, self).unlink()

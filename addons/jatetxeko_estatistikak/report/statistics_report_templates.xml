@@ -10,7 +10,7 @@
                             Data: <span t-esc="date_from" t-options='{"widget": "date"}'/> - <span t-esc="date_to" t-options='{"widget": "date"}'/>
                         </p>
 
-                        <!-- Summary Section -->
+                        <!-- Laburpen atala -->
                         <div class="row mt32 mb32">
                             <div class="col-4">
                                 <div class="card bg-light">
@@ -38,44 +38,44 @@
                             </div>
                         </div>
 
-                        <!-- Charts Section -->
+                        <!-- Grafikoen atala -->
                         <t t-if="has_matplotlib">
                             <div style="page-break-before: always;">&#160;</div>
 
                             <h2>Grafikoak</h2>
 
-                            <!-- Server Revenue Chart -->
+                            <!-- Zerbitzarien diru-sarreren grafikoa -->
                             <div class="mt16 mb32" t-if="charts.get('server_revenue')">
                                 <h3>Zerbitzarien Diru-sarrera</h3>
                                 <img t-att-src="'data:image/png;base64,%s' % charts['server_revenue']" style="max-width: 100%; height: auto;"/>
                             </div>
 
-                            <!-- Day of Week Chart -->
+                            <!-- Asteko egunaren grafikoa -->
                             <div class="mt16 mb32" t-if="charts.get('day_of_week')">
                                 <h3>Asteko Egunen Araberako Salmentak</h3>
                                 <img t-att-src="'data:image/png;base64,%s' % charts['day_of_week']" style="max-width: 100%; height: auto;"/>
                             </div>
 
-                            <!-- Dish Quantity Chart -->
+                            <!-- Plater kopuruaren grafikoa -->
                             <div class="mt16 mb32" t-if="charts.get('dish_quantity')">
                                 <h3>Plater Popularrak</h3>
                                 <img t-att-src="'data:image/png;base64,%s' % charts['dish_quantity']" style="max-width: 100%; height: auto;"/>
                             </div>
 
-                            <!-- Monthly Chart -->
+                            <!-- Hileko grafikoa -->
                             <div class="mt16 mb32" t-if="charts.get('monthly')">
                                 <h3>Hileko Salmentak</h3>
                                 <img t-att-src="'data:image/png;base64,%s' % charts['monthly']" style="max-width: 100%; height: auto;"/>
                             </div>
 
-                            <!-- Server Pie Chart -->
+                            <!-- Zerbitzarien tarta-grafikoa -->
                             <div class="mt16 mb32" t-if="charts.get('server_pie')">
                                 <h3>Zerbitzarien Banaketa</h3>
                                 <img t-att-src="'data:image/png;base64,%s' % charts['server_pie']" style="max-width: 100%; height: auto;"/>
                             </div>
                         </t>
 
-                        <!-- Tables Section -->
+                        <!-- Taulen atala -->
                         <div style="page-break-before: always;">&#160;</div>
 
                         <h2>Zerbitzari bakoitzeko estatistikak</h2>
@@ -137,6 +137,37 @@
                                 </t>
                             </tbody>
                         </table>
+
+                        <h2>Hilabeteko egunik jendetsuena</h2>
+                        <t t-if="busiest_day_of_month.get('max_count', 0) == 0">
+                            <p class="text-muted">Ez dago daturik aukeratutako epean.</p>
+                        </t>
+                        <t t-else="">
+                            <p>
+                                Egun(ak):
+                                <t t-foreach="busiest_day_of_month.get('best_days', [])" t-as="d">
+                                    <span t-esc="d"/>
+                                    <t t-if="d != busiest_day_of_month.get('best_days', [])[-1]">, </t>
+                                </t>
+                                — Eskaerak: <span t-esc="busiest_day_of_month.get('max_count')"/>
+                            </p>
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Eguna</th>
+                                        <th class="text-right">Eskaerak</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="busiest_day_of_month.get('by_day', [])" t-as="row">
+                                        <tr>
+                                            <td t-esc="row['day']"/>
+                                            <td class="text-right" t-esc="row['count']"/>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
 
                         <h2>Hileko estatistikak</h2>
                         <table class="table table-sm table-striped">
