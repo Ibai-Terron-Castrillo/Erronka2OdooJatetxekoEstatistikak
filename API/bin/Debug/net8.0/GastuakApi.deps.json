@@ -13,6 +13,7 @@
           "Moq": "4.20.72",
           "MySql.Data": "9.5.0",
           "NHibernate": "5.6.0",
+          "Npgsql": "8.0.7",
           "Swashbuckle.AspNetCore": "6.6.2",
           "xunit": "2.9.3"
         },
@@ -441,6 +442,14 @@
           }
         }
       },
+      "Npgsql/8.0.7": {
+        "runtime": {
+          "lib/net8.0/Npgsql.dll": {
+            "assemblyVersion": "8.0.7.0",
+            "fileVersion": "8.0.7.0"
+          }
+        }
+      },
       "Remotion.Linq/2.2.0": {
         "runtime": {
           "lib/netstandard1.0/Remotion.Linq.dll": {
@@ -734,6 +743,13 @@
       "sha512": "sha512-uDUFQQYSuLa2gdWrdHKJzvOqFkeVYMd3yWqGxtgyIG3cp+MxxQXNGe3iNYcy3f/U/yHjQpQUryMyvlBZVzz0FA==",
       "path": "nhibernate/5.6.0",
       "hashPath": "nhibernate.5.6.0.nupkg.sha512"
+    },
+    "Npgsql/8.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8QcXw22w43PYvS0/vmH6m566rzCl0ik+8oKBI5LkRikBVSo9XZE2LXa82wU7AZCMgoxJrP65zD93RPv9J/iUwg==",
+      "path": "npgsql/8.0.7",
+      "hashPath": "npgsql.8.0.7.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",
