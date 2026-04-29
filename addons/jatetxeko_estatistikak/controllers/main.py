@@ -9,6 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class JatetxekoController(http.Controller):
     """
+    TPV integraziorako REST API kontrolatzailea
     REST API controller used by the TPV application.
     """
 
@@ -29,6 +30,69 @@ class JatetxekoController(http.Controller):
     ], type='http', auth='public', methods=['POST'], csrf=False, cors='*')
     def validate_discount(self, **kwargs):
         """
+        TPVk deskontu-kodeak balioztatzeko API amaiera-puntua
+
+        Eskaera:
+            POST /api/discount/validate
+            Content-Type: application/json
+            Body: {"code": "ABC12345"}
+
+        Erantzuna:
+            {"valid": true, "percentage": 10} | {"valid": false, "message": "..."}
+        """
+        try:
+            # JSON gorputza parseatu
+            body = json.loads(request.httprequest.data.decode('utf-8'))
+            code = body.get('code')
+
+            if not code:
+                return Response(
+                    json.dumps({'valid': False, 'message': 'Kodea beharrezkoa da'}),
+                    content_type='application/json',
+                    status=400
+                )
+
+            # Kodea balioztatu
+            discount_model = request.env['jatetxeko.deskontuak']
+            result = discount_model.sudo().validate_code(code)
+
+            return Response(
+                json.dumps(result),
+                content_type='application/json',
+                status=200 if result.get('valid') else 400
+            )
+
+        except json.JSONDecodeError:
+            return Response(
+                json.dumps({'valid': False, 'message': 'JSON formatu baliogabea'}),
+                content_type='application/json',
+                status=400
+            )
+        except Exception as e:
+            _logger.error(f"Deskuntua balioztatzean errorea: {str(e)}")
+            return Response(
+                json.dumps({'valid': False, 'message': str(e)}),
+                content_type='application/json',
+                status=500
+            )
+
+    @http.route('/api/discount/apply', type='http', auth='public', methods=['POST'], csrf=False)
+    def apply_discount(self, **kwargs):
+        """
+        Eskaera bati deskontua aplikatzeko API amaiera-puntua
+
+        Eskaera:
+            POST /api/discount/apply
+            Content-Type: application/json
+            Body: {"code": "ABC12345", "order_id": 123}
+
+        Erantzuna:
+            {"valid": true, "percentage": 10}
+        """
+        try:
+            # JSON gorputza parseatu
+            body = json.loads(request.httprequest.data.decode('utf-8'))
+            code = body.get('code')
         Validate a discount code from the TPV.
 
         Request body:
@@ -89,6 +153,22 @@ class JatetxekoController(http.Controller):
                     'message': 'Kodea beharrezkoa da'
                 }, status=200)
 
+            # Kodea balioztatu
+            discount_model = request.env['jatetxeko.deskontuak']
+            result = discount_model.sudo().validate_code(code)
+
+            if not result.get('valid'):
+                return Response(
+                    json.dumps(result),
+                    content_type='application/json',
+                    status=400
+                )
+
+            # Deskuntua erabilita bezala markatu
+            discount = request.env['jatetxeko.deskontuak'].sudo().browse(result['code_id'])
+            discount.use_code()
+
+            # order_id emanda badago, aukeran eskaerari lotu
             discount_model = request.env['jatetxeko.deskontuak'].sudo()
             result = discount_model.validate_code(code)
 
@@ -122,6 +202,12 @@ class JatetxekoController(http.Controller):
                 'message': str(e)
             }, status=200)
         except Exception as e:
+            _logger.error(f"Deskuntua aplikatzean errorea: {str(e)}")
+            return Response(
+                json.dumps({'valid': False, 'message': str(e)}),
+                content_type='application/json',
+                status=500
+            )
             _logger.exception('Error applying discount')
             return self._json_response({
                 'valid': False,
@@ -131,6 +217,14 @@ class JatetxekoController(http.Controller):
     @http.route('/api/discount/list', type='http', auth='user', methods=['GET'], csrf=False, cors='*')
     def list_discounts(self, **kwargs):
         """
+        Deskuntu-kode aktibo guztiak zerrendatzeko API amaiera-puntua (adminentzat)
+
+        Eskaera:
+            GET /api/discount/list
+            Authorization: session cookie
+
+        Erantzuna:
+            [{"id": 1, "code": "ABC12345", "percentage": 10, "active": true}, ...]
         List all discount codes for authenticated Odoo users.
         """
         try:
@@ -149,12 +243,25 @@ class JatetxekoController(http.Controller):
             return self._json_response(result, status=200)
 
         except Exception as e:
+            _logger.error(f"Deskuntuak zerrendatzean errorea: {str(e)}")
+            return Response(
+                json.dumps({'error': str(e)}),
+                content_type='application/json',
+                status=500
+            )
             _logger.exception('Error listing discounts')
             return self._json_response({'error': str(e)}, status=500)
 
     @http.route('/api/sync/status', type='http', auth='user', methods=['GET'], csrf=False, cors='*')
     def sync_status(self, **kwargs):
         """
+        Sinkronizazio egoera egiaztatzeko API amaiera-puntua
+
+        Eskaera:
+            GET /api/sync/status
+
+        Erantzuna:
+            {"last_sync": "2026-03-30 10:00:00", "status": "success", "records": 100}
         Check the last synchronization status.
         """
         try:
@@ -179,6 +286,37 @@ class JatetxekoController(http.Controller):
             return self._json_response(result, status=200)
 
         except Exception as e:
+            _logger.error(f"Sinkronizazio egoera lortzean errorea: {str(e)}")
+            return Response(
+                json.dumps({'error': str(e)}),
+                content_type='application/json',
+                status=500
+            )
+
+    @http.route('/api/stats/busiest_day_of_month', type='http', auth='user', methods=['GET'], csrf=False)
+    def busiest_day_of_month(self, **kwargs):
+        try:
+            year_param = request.params.get('year')
+            year = int(year_param) if year_param else None
+            result = request.env['jatetxeko.eskaera'].sudo().get_busiest_day_of_month(year=year)
+            return Response(
+                json.dumps(result),
+                content_type='application/json',
+                status=200
+            )
+        except ValueError:
+            return Response(
+                json.dumps({'error': 'year parametroa zenbaki bat izan behar da'}),
+                content_type='application/json',
+                status=400
+            )
+        except Exception as e:
+            _logger.error(f"Hilabeteko egun jendetsuena kalkulatzean errorea: {str(e)}")
+            return Response(
+                json.dumps({'error': str(e)}),
+                content_type='application/json',
+                status=500
+            )
             _logger.exception('Error getting sync status')
             return self._json_response({'error': str(e)}, status=500)
 

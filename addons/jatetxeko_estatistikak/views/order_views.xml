@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Tree View -->
+        <!-- Zerrenda-ikuspegia -->
         <record id="view_eskaera_tree" model="ir.ui.view">
-            <field name="name">jatetxeko.eskaera.tree</field>
+            <field name="name">jatetxeko.eskaera.zerrenda</field>
             <field name="model">jatetxeko.eskaera</field>
             <field name="arch" type="xml">
                 <tree decoration-muted="state == 'draft'">
@@ -20,7 +20,7 @@
             </field>
         </record>
 
-        <!-- Form View -->
+        <!-- Formulario-ikuspegia -->
         <record id="view_eskaera_form" model="ir.ui.view">
             <field name="name">jatetxeko.eskaera.form</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -71,7 +71,7 @@
             </field>
         </record>
 
-        <!-- Search View -->
+        <!-- Bilaketa-ikuspegia -->
         <record id="view_eskaera_search" model="ir.ui.view">
             <field name="name">jatetxeko.eskaera.search</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -81,18 +81,20 @@
                     <field name="zerbitzaria_id"/>
                     <field name="mahia_id"/>
                     <filter string="Gaur" name="today" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 00:00:00')), ('date', '&lt;=', datetime.datetime.now().strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="Urte honetan" name="this_year" domain="[('date', '&gt;=', datetime.datetime(datetime.datetime.now().year, 1, 1).strftime('%Y-%m-%d 00:00:00')), ('date', '&lt;', datetime.datetime(datetime.datetime.now().year + 1, 1, 1).strftime('%Y-%m-%d 00:00:00'))]"/>
                     <filter string="Ordainduta" name="paid" domain="[('state', '=', 'paid')]"/>
-                    <group expand="0" string="Group By">
+                    <group expand="0" string="Taldekatu">
                         <filter string="Zerbitzaria" name="group_by_server" context="{'group_by': 'zerbitzaria_id'}"/>
                         <filter string="Mahaia" name="group_by_table" context="{'group_by': 'mahia_id'}"/>
                         <filter string="Data" name="group_by_date" context="{'group_by': 'date:day'}"/>
+                        <filter string="Hilabeteko eguna" name="group_by_day_of_month" context="{'group_by': 'day_of_month'}"/>
                         <filter string="Egoera" name="group_by_state" context="{'group_by': 'state'}"/>
                     </group>
                 </search>
             </field>
         </record>
 
-        <!-- Action -->
+        <!-- Ekintza -->
         <record id="action_eskaera" model="ir.actions.act_window">
             <field name="name">Eskaerak</field>
             <field name="res_model">jatetxeko.eskaera</field>

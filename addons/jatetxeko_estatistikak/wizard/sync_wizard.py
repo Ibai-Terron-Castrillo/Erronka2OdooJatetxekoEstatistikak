@@ -3,9 +3,9 @@ from odoo import models, fields, api, _
 from odoo.exceptions import UserError
 
 
-class SyncWizard(models.TransientModel):
+class SinkronizazioMorroia(models.TransientModel):
     _name = "jatetxeko.sync.wizard"
-    _description = "API Sinkronizazio Wizard"
+    _description = "API Sinkronizazio Morroia"
 
     sync_type = fields.Selection([
         ('full', 'Sinkronizazio osoa (dena)'),
@@ -17,7 +17,7 @@ class SyncWizard(models.TransientModel):
     date_from = fields.Datetime(string='Data-tik', help='Eskaerak sinkronizatzeko hasiera data')
 
     def action_sync(self):
-        """Execute the sync operation"""
+        """Sinkronizazio eragiketa exekutatu"""
         self.ensure_one()
         sync_api = self.env['jatetxeko.api.sync']
 

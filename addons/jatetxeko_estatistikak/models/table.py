@@ -3,7 +3,7 @@ from odoo import models, fields
 
 class Mahia(models.Model):
     _name = "jatetxeko.mahia"
-    _description = "Mahia (Table)"
+    _description = "Mahia"
 
     name = fields.Char(string="Mahia Zenbakia", required=True)
     external_id = fields.Integer(string="Kanpo ID")
@@ -13,13 +13,13 @@ class Mahia(models.Model):
 
     def unlink(self):
         """
-        Manually clear references in Eskaera (Order) before deleting the Table
-        to bypass database constraint if module is not fully updated.
+        Mahaia ezabatu aurretik, Eskaeretan (jatetxeko.eskaera) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
         """
         for record in self:
-            # Find orders using this table
+            # Mahia hau erabiltzen duten eskaerak bilatu
             orders = self.env['jatetxeko.eskaera'].search([('mahia_id', '=', record.id)])
             if orders:
-                # Clear the mahia_id
+                # mahia_id eremua garbitu
                 orders.write({'mahia_id': False})
         return super(Mahia, self).unlink()

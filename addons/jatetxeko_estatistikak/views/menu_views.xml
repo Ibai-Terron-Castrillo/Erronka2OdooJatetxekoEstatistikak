@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Main Menu -->
+        <!-- Menu nagusia -->
         <menuitem name="Jatetxeko Estatistikak" id="menu_jatetxeko_root"/>
 
-        <!-- Administration Menu (Admin Only) -->
+        <!-- Kudeaketa menua (administratzaileentzat soilik) -->
         <menuitem name="Kudeaketa" id="menu_kudeaketa" parent="menu_jatetxeko_root"
                   groups="jatetxeko_estatistikak.group_administratzailea"/>
 
@@ -25,10 +25,10 @@
         <menuitem name="Sinkronizazio Log" id="menu_sync_log" parent="menu_kudeaketa"
                   action="action_sync_log"/>
 
-        <!-- Statistics Menu (Both Roles) -->
+        <!-- Estatistikak menua (bi roletarako) -->
         <menuitem name="Estatistikak" id="menu_estatistikak" parent="menu_jatetxeko_root"/>
 
-        <menuitem name="Dashboard Orokorra" id="menu_stats_dashboard" parent="menu_estatistikak"
+        <menuitem name="Aginte-panela Orokorra" id="menu_stats_dashboard" parent="menu_estatistikak"
                   action="action_jatetxeko_dashboard" sequence="1"/>
         <menuitem name="Zerbitzarien Eskaerak" id="menu_stats_server" parent="menu_estatistikak"
                   action="action_orders_per_server" sequence="10"/>
@@ -42,6 +42,8 @@
                   action="action_day_of_week" sequence="50"/>
         <menuitem name="Hileko Estatistikak" id="menu_stats_month" parent="menu_estatistikak"
                   action="action_monthly_stats" sequence="60"/>
+        <menuitem name="Hilabeteko Egun Jendetsuena (Hilabetez)" id="menu_stats_busiest_day_of_month" parent="menu_estatistikak"
+                  action="action_stats_month_busiest_day" sequence="65"/>
         <menuitem name="Inprimatu Txostena" id="menu_print_report" parent="menu_estatistikak"
                   action="action_report_wizard" sequence="70"/>
     </data>

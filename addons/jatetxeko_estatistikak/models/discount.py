@@ -6,7 +6,7 @@ import string
 
 class Deskontuak(models.Model):
     _name = "jatetxeko.deskontuak"
-    _description = "Deskontuak (Discount Codes)"
+    _description = "Deskontuak"
 
     name = fields.Char(
         string="Kodea",
@@ -48,6 +48,14 @@ class Deskontuak(models.Model):
 
     def unlink(self):
         """
+        Deskuntua ezabatu aurretik, Eskaeretan (jatetxeko.eskaera) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
+        """
+        for record in self:
+            # Deskuntu hau erabiltzen duten eskaerak bilatu
+            orders = self.env['jatetxeko.eskaera'].search([('discount_id', '=', record.id)])
+            if orders:
+                # discount_id eremua garbitu
         Clear discount references before deleting a discount code.
         """
         for record in self:
@@ -60,6 +68,7 @@ class Deskontuak(models.Model):
 
     @api.model
     def _generate_code(self):
+        """Ausazko 8 karaktereko deskontu-kodea sortu"""
         """Generate random 8-character discount code."""
         return ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
@@ -71,6 +80,8 @@ class Deskontuak(models.Model):
 
     @api.model
     def validate_code(self, code):
+        """Deskontu-kodea balioztatu eta, baliozkoa bada, ehunekoa itzuli"""
+        discount = self.search([('name', '=', code), ('active', '=', True)], limit=1)
         """Validate a discount code and return its percentage if valid."""
         normalized_code = self._normalize_code(code)
 
@@ -103,6 +114,9 @@ class Deskontuak(models.Model):
         }
 
     def use_code(self):
+        """Erabilera-kopurua handitu"""
+        self.ensure_one()
+        self.usage_count += 1
         """Increment usage count."""
         self.ensure_one()
         self.write({'usage_count': self.usage_count + 1})

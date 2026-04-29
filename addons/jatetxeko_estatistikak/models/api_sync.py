@@ -10,6 +10,9 @@ import traceback
 
 _logger = logging.getLogger(__name__)
 
+# C# APIaren oinarrizko URLa (5093 portua)
+# Docker edukiontzitik host makinara konektatzeko, host.docker.internal erabili
+API_BASE_URL = "http://localhost:5093/api"
 DEFAULT_API_BASE_URL = os.getenv("JATETXEKO_API_BASE_URL", "http://host.docker.internal:5093/api")
 DEFAULT_API_TIMEOUT = int(os.getenv("JATETXEKO_API_TIMEOUT", "30"))
 DEFAULT_API_VERIFY_SSL = os.getenv("JATETXEKO_API_VERIFY_SSL", "false").strip().lower() in (
@@ -17,7 +20,7 @@ DEFAULT_API_VERIFY_SSL = os.getenv("JATETXEKO_API_VERIFY_SSL", "false").strip().
 )
 
 
-class ApiSync(models.AbstractModel):
+class ApiSinkronizazioa(models.AbstractModel):
     _name = "jatetxeko.api.sync"
     _description = "API Sinkronizazioa"
 
@@ -144,6 +147,20 @@ class ApiSync(models.AbstractModel):
 
     @api.model
     def _get_api_data(self, endpoint):
+        """C# API-tik datuak eskuratzeko metodo generikoa"""
+        try:
+            url = f"{API_BASE_URL}/{endpoint}"
+            _logger.info(f"API datuak eskuratzen: {url}")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            data = response.json()
+            _logger.info(
+                f"API erantzuna ({endpoint}): {len(data) if isinstance(data, list) else 1} erregistro"
+            )
+            return data
+        except requests.RequestException as e:
+            _logger.error(f"API errorea {endpoint} eskuratzean: {str(e)}")
+            raise Exception(_("API errorea: %s") % str(e))
         """Generic method to fetch data from C# API"""
         response = self._request_api('get', endpoint)
         data = response.json()
@@ -157,9 +174,9 @@ class ApiSync(models.AbstractModel):
     @api.model
     def _parse_api_datetime(self, date_val):
         """
-        Parse datetime from API and adjust for timezone offset to show same time in Odoo UI.
-        Odoo stores in UTC and displays in user's timezone.
-        To show "12:00" for a Madrid user (+2h), we store "10:00" in DB.
+        API-tik datorren datetime-a parseatu eta ordu-zonaren offset-a doitu, Odoo UI-n ordu bera ikusteko.
+        Odoo-k UTC-n gordetzen du eta erabiltzailearen ordu-zonan erakusten du.
+        Madrilgo erabiltzaile batek (+2h) "12:00" ikus dezan, DB-n "10:00" gordetzen dugu.
         """
         if not date_val:
             return False
@@ -176,6 +193,19 @@ class ApiSync(models.AbstractModel):
         else:
             return False
 
+        # Erabiltzailearen TZ offset-a doitu, Odoo-ren bistaratze-konbertsioa saihesteko
+        # Horrela "orduko" balioa berdina da ordu-zona edozein dela ere
+        user_tz_name = self.env.user.tz or 'Europe/Madrid'
+        try:
+            user_tz = pytz.timezone(user_tz_name)
+            # dt naive-a erabiltzailearen ordu-zonan dagoela suposatuta lokalizatu
+            local_dt = user_tz.localize(dt, is_dst=None)
+            # UTC-ra bihurtu
+            utc_dt = local_dt.astimezone(pytz.utc)
+            # UTC naive-a itzuli Odoo-n gordetzeko
+            return utc_dt.replace(tzinfo=None)
+        except:
+            return dt  # TZ-k huts egiten badu, jatorrizko naive balioa itzuli
         user_tz_name = self.env.user.tz or 'Europe/Madrid'
         try:
             user_tz = pytz.timezone(user_tz_name)
@@ -187,7 +217,7 @@ class ApiSync(models.AbstractModel):
 
     @api.model
     def _create_sync_log(self, sync_type, status, records_synced=0, error_message=None):
-        """Create sync log entry"""
+        """Sinkronizazio log sarrera sortu"""
         try:
             self.env['jatetxeko.sync.log'].create({
                 'sync_type': sync_type,
@@ -196,7 +226,7 @@ class ApiSync(models.AbstractModel):
                 'error_message': error_message,
             })
         except Exception as e:
-            _logger.error(f"Error creating sync log: {str(e)}")
+            _logger.error(f"Sinkronizazio log-a sortzean errorea: {str(e)}")
 
     @api.model
     def sync_roles(self):
@@ -385,9 +415,11 @@ class ApiSync(models.AbstractModel):
             else:
                 order = Eskaera.create(vals)
 
+            # Eskaera honetako lerroak sinkronizatu
             order_details = details_by_order.get(item_id, [])
-            _logger.info(f"Order {item_id} has {len(order_details)} lines in API")
+            _logger.info(f"Eskaera {item_id}: API-n {len(order_details)} lerro daude")
 
+            # Existitzen diren lerroak ezabatu berriro inportatzeko (parekatzea baino errazagoa)
             order.line_ids.unlink()
 
             for detail in order_details:
@@ -405,13 +437,14 @@ class ApiSync(models.AbstractModel):
                     'price_unit': float(prezioa),
                 })
 
+            # Eskaeraren guztizkoak berriro kalkulatzera behartu
             order._compute_totals()
             synced += 1
         return synced
 
     @api.model
     def sync_all(self):
-        """Full sync from C# API"""
+        """Sinkronizazio osoa C# API-tik"""
         try:
             roles = self.sync_roles()
             servers = self.sync_servers()
@@ -425,13 +458,13 @@ class ApiSync(models.AbstractModel):
 
         except Exception as e:
             error_msg = str(e)
-            _logger.error(f"Sync all error: {error_msg}\n{traceback.format_exc()}")
+            _logger.error(f"Sinkronizazio osoaren errorea: {error_msg}\n{traceback.format_exc()}")
             self._create_sync_log('full', 'failed', 0, error_msg)
             return {'status': 'failed', 'error': error_msg}
 
     @api.model
     def sync_masters(self):
-        """Sync master data (roles, servers, dishes, tables) only"""
+        """Datu maisuak soilik sinkronizatu (rolak, zerbitzariak, platerak, mahiak)"""
         try:
             roles = self.sync_roles()
             servers = self.sync_servers()
@@ -444,12 +477,19 @@ class ApiSync(models.AbstractModel):
 
         except Exception as e:
             error_msg = str(e)
-            _logger.error(f"Sync masters error: {error_msg}\n{traceback.format_exc()}")
+            _logger.error(f"Datu maisuen sinkronizazio errorea: {error_msg}\n{traceback.format_exc()}")
             self._create_sync_log('partial', 'failed', 0, error_msg)
             return {'status': 'failed', 'error': error_msg}
 
     @api.model
     def push_worker_to_api(self, worker):
+        """Odootik C# APIra langile bat bidali"""
+        import requests
+
+        # Many2one-tik rolaren external_id hartu
+        rola_external_id = worker.role_id.external_id if worker.role_id else 2
+
+        # APIrako datuak prestatu (Langileak modelarekin bat etortzeko)
         """Push a worker from Odoo to C# API"""
         rola_external_id = worker.role_id.external_id if worker.role_id else 2
 
@@ -462,9 +502,24 @@ class ApiSync(models.AbstractModel):
             'txatBaimena': worker.txat_baimena,
         }
 
+        # Langileak external_id badu, dagoena eguneratu
         if worker.external_id:
             endpoint = f"Langileak/{worker.external_id}"
             try:
+                response = requests.put(url, json=payload, timeout=30)
+                response.raise_for_status()
+                _logger.info(f"Langilea eguneratuta API-n: {worker.name} (ID: {worker.external_id})")
+                return {'status': 'updated', 'external_id': worker.external_id}
+            except requests.RequestException as e:
+                _logger.error(f"Langilea eguneratzean errorea: {str(e)}")
+                raise Exception(_("Errorea langilea eguneratzean: %s") % str(e))
+        else:
+            # API-n langile berria sortu
+            url = f"{API_BASE_URL}/Langileak"
+            try:
+                response = requests.post(url, json=payload, timeout=30)
+                response.raise_for_status()
+                # Erantzunetik ID berria lortu
                 self._request_api('put', endpoint, payload)
                 _logger.info(f"Updated worker {worker.name} in API (ID: {worker.external_id})")
                 return {'status': 'updated', 'external_id': worker.external_id}
@@ -479,15 +534,17 @@ class ApiSync(models.AbstractModel):
                 new_id = result.get('id')
                 if new_id:
                     worker.write({'external_id': new_id})
-                _logger.info(f"Created worker {worker.name} in API (ID: {new_id})")
+                _logger.info(f"Langilea sortuta API-n: {worker.name} (ID: {new_id})")
                 return {'status': 'created', 'external_id': new_id}
+            except requests.RequestException as e:
+                _logger.error(f"Langilea sortzean errorea: {str(e)}")
             except Exception as e:
                 _logger.error(f"Error creating worker: {str(e)}")
                 raise Exception(_("Errorea langilea sortzean: %s") % str(e))
 
     @api.model
     def push_all_workers_to_api(self):
-        """Push all workers with username/password to C# API"""
+        """Erabiltzailea/pasahitza duten langile guztiak C# APIra bidali"""
         workers = self.env['jatetxeko.zerbitzaria'].search([
             ('erabiltzailea', '!=', False),
             ('pasahitza', '!=', False),
@@ -503,7 +560,7 @@ class ApiSync(models.AbstractModel):
                 errors.append(f"{worker.name}: {str(e)}")
 
         if errors:
-            _logger.warning(f"Push workers errors: {errors}")
+            _logger.warning(f"Langileak bidaltzean erroreak: {errors}")
 
         return {
             'status': 'success' if not errors else 'partial',
