@@ -6,7 +6,7 @@ _logger = logging.getLogger(__name__)
 
 class Zerbitzaria(models.Model):
     _name = "jatetxeko.zerbitzaria"
-    _description = "Zerbitzaria (Server)"
+    _description = "Zerbitzaria"
 
     name = fields.Char(string="Izena", required=True)
     external_id = fields.Integer(string="Kanpo ID", help="C# API-ko ID")
@@ -24,15 +24,15 @@ class Zerbitzaria(models.Model):
 
     def unlink(self):
         """
-        Manually clear references in Eskaera (Order) before deleting the Server
-        to bypass database constraint if module is not fully updated.
-        Using sudo() to ensure we have permission to clear the field.
+        Zerbitzaria ezabatu aurretik, Eskaeretan (jatetxeko.eskaera) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
+        sudo() erabiltzen da eremua garbitzeko baimenak ziurtatzeko.
         """
         for record in self:
-            # Find orders using this server
+            # Zerbitzari hau erabiltzen duten eskaerak bilatu
             orders = self.env['jatetxeko.eskaera'].sudo().search([('zerbitzaria_id', '=', record.id)])
             if orders:
-                # Clear the zerbitzaria_id
+                # zerbitzaria_id eremua garbitu
                 orders.write({'zerbitzaria_id': False})
         return super(Zerbitzaria, self).unlink()
 
@@ -47,7 +47,7 @@ class Zerbitzaria(models.Model):
             record.total_billing = sum(record.order_ids.mapped("total_amount"))
 
     def action_push_to_api(self):
-        """Push this worker to C# API"""
+        """Langile hau C# APIra bidali"""
         for record in self:
             if not record.erabiltzailea or not record.pasahitza:
                 raise UserError("Erabiltzailea eta pasahitza beharrezkoak dira APIra bidaltzeko.")
@@ -62,4 +62,3 @@ class Zerbitzaria(models.Model):
                 'sticky': False,
             }
         }
-

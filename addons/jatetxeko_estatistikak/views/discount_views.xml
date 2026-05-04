@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Tree View -->
+        <!-- Zerrenda-ikuspegia -->
         <record id="view_deskontuak_tree" model="ir.ui.view">
-            <field name="name">jatetxeko.deskontuak.tree</field>
+            <field name="name">jatetxeko.deskontuak.zerrenda</field>
             <field name="model">jatetxeko.deskontuak</field>
             <field name="arch" type="xml">
                 <tree>
@@ -18,7 +18,7 @@
             </field>
         </record>
 
-        <!-- Form View -->
+        <!-- Formulario-ikuspegia -->
         <record id="view_deskontuak_form" model="ir.ui.view">
             <field name="name">jatetxeko.deskontuak.form</field>
             <field name="model">jatetxeko.deskontuak</field>
@@ -50,7 +50,7 @@
             </field>
         </record>
 
-        <!-- Action -->
+        <!-- Ekintza -->
         <record id="action_deskontuak" model="ir.actions.act_window">
             <field name="name">Deskontuak</field>
             <field name="res_model">jatetxeko.deskontuak</field>

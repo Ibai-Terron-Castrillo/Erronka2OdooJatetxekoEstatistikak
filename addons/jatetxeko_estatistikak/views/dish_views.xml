@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Tree View -->
+        <!-- Zerrenda-ikuspegia -->
         <record id="view_platera_tree" model="ir.ui.view">
-            <field name="name">jatetxeko.platera.tree</field>
+            <field name="name">jatetxeko.platera.zerrenda</field>
             <field name="model">jatetxeko.platera</field>
             <field name="arch" type="xml">
                 <tree>
@@ -16,7 +16,7 @@
             </field>
         </record>
 
-        <!-- Form View -->
+        <!-- Formulario-ikuspegia -->
         <record id="view_platera_form" model="ir.ui.view">
             <field name="name">jatetxeko.platera.form</field>
             <field name="model">jatetxeko.platera</field>
@@ -42,7 +42,7 @@
             </field>
         </record>
 
-        <!-- Action -->
+        <!-- Ekintza -->
         <record id="action_platera" model="ir.actions.act_window">
             <field name="name">Platerak</field>
             <field name="res_model">jatetxeko.platera</field>

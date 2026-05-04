@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Jatetxeko Estatistikak',
-    'summary': 'Restaurant Statistics and Management',
+    'summary': 'Jatetxeko estatistikak eta kudeaketa',
     'description': """
-        Restaurant Statistics module with C# API integration.
-        Features:
-        - Sync servers, dishes, tables, orders from C# API (port 5093)
-        - Statistics via Graph/Pivot views
-        - Discount code management with TPV API
-        - Role-based access (Administrator vs Server)
+        Jatetxeko estatistiken modulua, C# API integrazioarekin.
+        Ezaugarriak:
+        - C# API-tik (5093 portua) zerbitzariak, platerak, mahiak eta eskaerak sinkronizatzea
+        - Estatistikak Graph/Pivot ikuspegiekin
+        - Deskuntu-kodeen kudeaketa TPV APIarekin
+        - Rolen araberako sarbidea (Administratzailea vs Zerbitzaria)
     """,
     'author': 'BlueHat',
     'website': 'https://www.bluehat.com',
