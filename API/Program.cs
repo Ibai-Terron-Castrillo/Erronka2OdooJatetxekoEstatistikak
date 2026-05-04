@@ -128,7 +128,7 @@ builder.Services.AddSwaggerGen(c =>
         if (docName == "langileak" && controllerName.Contains("LangileakController"))
             return true;
 
-        if (docName == "Rolak" && controllerName.Contains("RolakController"))
+        if (docName == "rolak" && controllerName.Contains("RolakController"))
             return true;
 
         if (docName == "mahaiak" && controllerName.Contains("MahaiakController"))
@@ -159,6 +159,7 @@ builder.Services.AddTransient<RolakRepository>();
 builder.Services.AddTransient<MahaiakRepository>();
 builder.Services.AddTransient<ErreserbakRepository>();
 builder.Services.AddTransient<JatetxekoInfoRepository>();
+builder.Services.AddTransient<DeskuntuakRepository>();
 builder.Services.AddHostedService<JatetxeaApi.BackService.KaxaTotalaKalkulatu>();
 
 
@@ -176,7 +177,7 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/kateoria/swagger.json", "JatetxeaAPI/Kategoria");
         c.SwaggerEndpoint("/swagger/zerbitzuak/swagger.json", "JatetxeaAPI/Zerbitzuak");
         c.SwaggerEndpoint("/swagger/langileak/swagger.json", "JatetxeaAPI/Langileak");
-        c.SwaggerEndpoint("/swagger/Rolak/swagger.json", "JatetxeaAPI/Rolak");
+        c.SwaggerEndpoint("/swagger/rolak/swagger.json", "JatetxeaAPI/Rolak");
         c.SwaggerEndpoint("/swagger/mahaiak/swagger.json", "JatetxeaAPI/Mahaiak");
         c.SwaggerEndpoint("/swagger/erreserbak/swagger.json", "JatetxeaAPI/Erreserbak");
         c.SwaggerEndpoint("/swagger/jatetxeko_info/swagger.json", "JatetxeaAPI/Jatetxeko_Info");

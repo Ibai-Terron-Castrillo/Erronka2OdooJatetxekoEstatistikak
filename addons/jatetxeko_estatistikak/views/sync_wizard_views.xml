@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Sync Wizard Form -->
+        <!-- Sinkronizazio morroiaren formularioa -->
         <record id="view_sync_wizard_form" model="ir.ui.view">
             <field name="name">jatetxeko.sync.wizard.form</field>
             <field name="model">jatetxeko.sync.wizard</field>
@@ -35,7 +35,7 @@
             </field>
         </record>
 
-        <!-- Sync Wizard Action -->
+        <!-- Sinkronizazio morroiaren ekintza -->
         <record id="action_sync_wizard" model="ir.actions.act_window">
             <field name="name">API Sinkronizazioa</field>
             <field name="res_model">jatetxeko.sync.wizard</field>
@@ -43,9 +43,9 @@
             <field name="target">new</field>
         </record>
 
-        <!-- Sync Log Tree View -->
+        <!-- Sinkronizazio log-aren zuhaitz-ikuspegia -->
         <record id="view_sync_log_tree" model="ir.ui.view">
-            <field name="name">jatetxeko.sync.log.tree</field>
+            <field name="name">jatetxeko.sync.log.zerrenda</field>
             <field name="model">jatetxeko.sync.log</field>
             <field name="arch" type="xml">
                 <tree>
@@ -58,7 +58,7 @@
             </field>
         </record>
 
-        <!-- Sync Log Form View -->
+        <!-- Sinkronizazio log-aren formulario-ikuspegia -->
         <record id="view_sync_log_form" model="ir.ui.view">
             <field name="name">jatetxeko.sync.log.form</field>
             <field name="model">jatetxeko.sync.log</field>
@@ -83,7 +83,7 @@
             </field>
         </record>
 
-        <!-- Sync Log Action -->
+        <!-- Sinkronizazio log-aren ekintza -->
         <record id="action_sync_log" model="ir.actions.act_window">
             <field name="name">Sinkronizazio Log</field>
             <field name="res_model">jatetxeko.sync.log</field>

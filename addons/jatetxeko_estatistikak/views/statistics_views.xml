@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Orders per Server Graph View -->
+        <!-- Zerbitzari bakoitzeko eskaeren grafikoa -->
         <record id="view_orders_per_server_graph" model="ir.ui.view">
             <field name="name">Eskaerak zerbitzari bakoitzeko</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -13,7 +13,7 @@
             </field>
         </record>
 
-        <!-- Orders per Server Graph (Count) -->
+        <!-- Zerbitzari bakoitzeko eskaera kopuruaren grafikoa -->
         <record id="view_orders_count_per_server_graph" model="ir.ui.view">
             <field name="name">Eskaera kopurua zerbitzari bakoitzeko</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -24,7 +24,7 @@
             </field>
         </record>
 
-        <!-- Orders per Dish Graph View -->
+        <!-- Plater bakoitzeko eskaeren grafikoa -->
         <record id="view_orders_per_dish_graph" model="ir.ui.view">
             <field name="name">Eskaerak plater bakoitzeko</field>
             <field name="model">jatetxeko.eskaera.line</field>
@@ -36,7 +36,7 @@
             </field>
         </record>
 
-        <!-- Busiest Days of Week Pivot View -->
+        <!-- Asteko egun jendetsuenen pivot-a -->
         <record id="view_busiest_days_week_pivot" model="ir.ui.view">
             <field name="name">Aste gogorrenak</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -49,7 +49,7 @@
             </field>
         </record>
 
-        <!-- Day of Week Analysis -->
+        <!-- Asteko egunen analisia -->
         <record id="view_day_of_week_graph" model="ir.ui.view">
             <field name="name">Asteko egunak</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -61,7 +61,7 @@
             </field>
         </record>
 
-        <!-- Monthly Statistics Graph -->
+        <!-- Hileko estatistiken grafikoa -->
         <record id="view_monthly_stats_graph" model="ir.ui.view">
             <field name="name">Hileko estatistikak</field>
             <field name="model">jatetxeko.eskaera</field>
@@ -73,9 +73,9 @@
             </field>
         </record>
 
-        <!-- Monthly Pivot -->
+        <!-- Hileko pivot-a -->
         <record id="view_monthly_stats_pivot" model="ir.ui.view">
-            <field name="name">Hileko estatistikak pivot</field>
+            <field name="name">Hileko estatistikak pibota</field>
             <field name="model">jatetxeko.eskaera</field>
             <field name="arch" type="xml">
                 <pivot>
@@ -85,7 +85,30 @@
             </field>
         </record>
 
-        <!-- Actions for Statistics -->
+        <record id="view_stats_month_busiest_day_tree" model="ir.ui.view">
+            <field name="name">Hilabeteko egunik jendetsuena (hilabetez) zerrenda</field>
+            <field name="model">jatetxeko.stats.month_busiest_day</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="hilabetea"/>
+                    <field name="egun_jendetsuena"/>
+                    <field name="eskaera_kopurua"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_stats_month_busiest_day_graph" model="ir.ui.view">
+            <field name="name">Hilabeteko egunik jendetsuena (hilabetez) grafikoa</field>
+            <field name="model">jatetxeko.stats.month_busiest_day</field>
+            <field name="arch" type="xml">
+                <graph type="bar">
+                    <field name="hilabetea"/>
+                    <field name="eskaera_kopurua" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Estatistiketarako ekintzak -->
         <record id="action_orders_per_server" model="ir.actions.act_window">
             <field name="name">Zerbitzari bakoitzeko eskaerak</field>
             <field name="res_model">jatetxeko.eskaera</field>
@@ -128,21 +151,28 @@
             <field name="view_id" ref="view_monthly_stats_graph"/>
         </record>
 
-        <!-- Dashboard Action (Combined View) -->
+        <record id="action_stats_month_busiest_day" model="ir.actions.act_window">
+            <field name="name">Hilabeteko egunik jendetsuena (Hilabetez)</field>
+            <field name="res_model">jatetxeko.stats.month_busiest_day</field>
+            <field name="view_mode">tree,graph</field>
+            <field name="view_id" ref="view_stats_month_busiest_day_tree"/>
+        </record>
+
+        <!-- Aginte-panela (ikuspegi bateratua) -->
         <record id="action_jatetxeko_dashboard" model="ir.actions.act_window">
-            <field name="name">Dashboard Orokorra</field>
+            <field name="name">Aginte-panela Orokorra</field>
             <field name="res_model">jatetxeko.eskaera</field>
             <field name="view_mode">graph,pivot</field>
             <field name="view_id" ref="view_day_of_week_graph"/>
             <field name="context">{'search_default_group_by_date': 1}</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Ez dago daturik dashboard-a erakusteko.
+                    Ez dago daturik aginte-panela erakusteko.
                 </p>
             </field>
         </record>
 
-        <!-- PDF Report Action -->
+        <!-- PDF txostenaren ekintza -->
         <record id="action_report_statistics_pdf" model="ir.actions.report">
             <field name="name">Estatistika Txostena (PDF)</field>
             <field name="model">jatetxeko.eskaera</field>

@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 class Platera(models.Model):
     _name = "jatetxeko.platera"
-    _description = "Platera (Dish)"
+    _description = "Platera"
 
     name = fields.Char(string="Izena", required=True)
     external_id = fields.Integer(string="Kanpo ID")
@@ -15,14 +15,14 @@ class Platera(models.Model):
 
     def unlink(self):
         """
-        Manually clear references in EskaeraLine before deleting the Dish
-        to bypass database constraint if module is not fully updated.
+        Platera ezabatu aurretik, Eskaera Lerroetan (jatetxeko.eskaera.line) dauden erreferentziak eskuz garbitu,
+        modulua guztiz eguneratuta ez badago datu-baseko murrizketak saihesteko.
         """
         for record in self:
-            # Find order lines using this dish
+            # Platera hau erabiltzen duten eskaera lerroak bilatu
             lines = self.env['jatetxeko.eskaera.line'].search([('platera_id', '=', record.id)])
             if lines:
-                # Clear the platera_id
+                # platera_id eremua garbitu
                 lines.write({'platera_id': False})
         return super(Platera, self).unlink()
 

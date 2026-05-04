@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <!-- Restaurant Category for Groups -->
+        <!-- Taldeentzako kategoria -->
         <record id="module_category_jatetxeko" model="ir.module.category">
             <field name="name">Jatetxeko Estatistikak</field>
-            <field name="description">Manage restaurant statistics access rights</field>
+            <field name="description">Jatetxeko estatistiken sarbide-baimenak kudeatu</field>
             <field name="sequence">20</field>
         </record>
 
-        <!-- Administrator Group (Full Access) -->
+        <!-- Administratzaile taldea (sarbide osoa) -->
         <record id="group_administratzailea" model="res.groups">
             <field name="name">Administratzailea</field>
             <field name="category_id" ref="module_category_jatetxeko"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-            <field name="comment">Full access: create, read, write, delete</field>
+            <field name="comment">Sarbide osoa: sortu, irakurri, editatu, ezabatu</field>
         </record>
 
-        <!-- Server Group (Read-Only Access) -->
+        <!-- Zerbitzari taldea (irakurketa soilik) -->
         <record id="group_zerbitzaria" model="res.groups">
             <field name="name">Zerbitzaria</field>
             <field name="category_id" ref="module_category_jatetxeko"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-            <field name="comment">Read-only access: view data and statistics</field>
+            <field name="comment">Irakurketa soilik: datuak eta estatistikak ikusi</field>
         </record>
 
-        <!-- Record Rules for Zerbitzaria (Read-Only) -->
+        <!-- Erregistro arauak Zerbitzariarentzat (irakurketa soilik) -->
         <record id="zerbitzaria_zerbitzari_rule" model="ir.rule">
             <field name="name">Zerbitzaria: Zerbitzariak irakurtzeko soilik</field>
             <field name="model_id" ref="model_jatetxeko_zerbitzaria"/>

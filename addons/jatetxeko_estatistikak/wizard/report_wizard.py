@@ -3,9 +3,9 @@ from odoo import models, fields, api
 from datetime import datetime, timedelta
 
 
-class ReportWizard(models.TransientModel):
+class TxostenMorroia(models.TransientModel):
     _name = 'jatetxeko.report.wizard'
-    _description = 'Estatistika Txostena Wizard'
+    _description = 'Estatistika Txostenaren Morroia'
 
     date_from = fields.Date(
         string='Data Hasiera',
@@ -19,7 +19,7 @@ class ReportWizard(models.TransientModel):
     )
 
     def action_print_report(self):
-        """Print the statistics report"""
+        """Estatistika txostena inprimatu"""
         self.ensure_one()
         data = {
             'date_from': self.date_from,

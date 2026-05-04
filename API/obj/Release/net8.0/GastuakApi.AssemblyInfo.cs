@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GastuakApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+524189ce50460737191cbd64315b12af91fc2fc1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31ef95821fd3180c3df4ed7beea9417bfec3fdb8")]
 [assembly: System.Reflection.AssemblyProductAttribute("GastuakApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GastuakApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
